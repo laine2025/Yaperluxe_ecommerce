@@ -1,0 +1,13 @@
+# On ignore les fichiers de configuration contenant des mots de passe
+.env
+config.php
+
+# On ignore les dossiers de dépendances lourds (optionnel si vous travaillez sans Composer)
+/vendor/
+
+# On ignore les logs d'erreurs
+*.log
+
+# On ignore les fichiers systèmes
+.DS_Store
+Thumbs.db

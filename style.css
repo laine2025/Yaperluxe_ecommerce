@@ -1,0 +1,46 @@
+:root {
+    --bg: #0b0118;
+    --glass: rgba(255, 255, 255, 0.05);
+    --grad: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+body {
+    background: var(--bg);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Les boules de couleur en fond */
+.blob {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: var(--grad);
+    filter: blur(100px);
+    z-index: -1;
+    border-radius: 50%;
+    opacity: 0.4;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.btn-grad {
+    background: var(--grad);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-grad:hover { transform: scale(1.05); }
