@@ -1,0 +1,56 @@
+.env	Le coffre-fort. Contient tes identifiants secrets (Gmail, BDD).
+.gitignore	Le garde du corps. Dit à Git de ne pas envoyer le .env sur GitHub.
+db_connect.php	Établit la connexion entre PHP et ta base MySQL.
+env_loader.php	Lit le fichier .env pour que PHP puisse utiliser tes mots de passe.
+traitement_connexion.php	Vérifie si l'email et le MDP tapés par l'utilisateur sont corrects.
+valider_commande.php	Enregistre les achats du panier dans la table commandes.
+ecommerce_db.sql	La structure de ta base de données (pour ton prof et ton binôme).
+
+
+1. Introduction : Le concept "YAPERLUXE"
+
+"Bonjour à tous, je vous présente YAPERLUXE, une plateforme e-commerce de bijoux modernes. Mon objectif était de créer une interface fluide (Dark Mode, dégradés vibrants) tout en garantissant la sécurité des données et une gestion de panier dynamique."
+2. L'Architecture (Pourquoi ce dossier ?)
+
+"Pour que le projet soit professionnel et évolutif, j'ai séparé les rôles :"
+
+    La Racine : Contient les pages principales que l'utilisateur voit (index.php, panier.php).
+
+    Le dossier include/ : C'est le moteur invisible. J'y ai centralisé la connexion à la BDD (db_connect.php) et le header pour ne pas avoir à réécrire le menu sur chaque page.
+
+    Le dossier uploads/ : C'est là que sont stockées les images des bijoux que nous ajoutons via l'interface d'administration.
+
+3. Le JSON et le LocalStorage (Le point technique clé)
+
+C'est ici que tu vas les impressionner. Dans ton projet, le panier ne recharge pas la page à chaque clic.
+
+Pourquoi le JSON ?
+"Pour le panier, j'utilise le JSON (JavaScript Object Notation). C'est un format de texte très léger qui permet de transformer des objets complexes (un bijou avec son nom, son prix et son image) en une simple chaîne de caractères."
+
+Le fonctionnement :
+
+    Stockage : On ne peut pas stocker une liste (tableau) directement dans le navigateur. On utilise donc JSON.stringify() pour transformer notre panier en texte et le ranger dans le LocalStorage.
+
+    Récupération : Quand on arrive sur panier.php, on utilise JSON.parse(). Cela transforme le texte JSON en un véritable objet JavaScript que l'on peut manipuler (calculer le total, supprimer un article).
+
+4. La Sécurité (Git et PHPMailer)
+
+"Un bon développeur ne laisse jamais ses clés sur la porte. Voici comment j'ai sécurisé YAPERLUXE :"
+
+    Le fichier .env : J'y ai caché mes identifiants Gmail et BDD.
+
+    Le .gitignore : Ce fichier est mon garde du corps. Il interdit à Git d'envoyer mon fichier .env sur GitHub. Mon code est public, mais mes mots de passe restent privés.
+
+    PHPMailer : Au lieu d'utiliser la fonction mail de base (souvent bloquée), j'utilise cette bibliothèque pro pour envoyer des confirmations d'inscription via le serveur SMTP de Gmail. C'est plus fiable et sécurisé.
+
+5. Les Fonctionnalités CRUD
+
+"Le projet gère le cycle de vie complet des données :"
+
+    Create : Inscription et ajout de produits.
+
+    Read : Affichage du catalogue et du profil.
+
+    Update : Mise à jour des infos du profil et des images produits.
+
+    Delete : Suppression d'un article du panier en un clic grâce à la méthode splice() en JavaScript.

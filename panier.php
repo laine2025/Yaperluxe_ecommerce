@@ -21,16 +21,16 @@ include 'include/header.php';
 function supprimerDuPanier(index) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
-    // On retire l'élément à l'index donné
+    // Je retire l'élément à l'index donné
     cart.splice(index, 1);
     
-    // On sauvegarde le nouveau panier dans le localStorage
+    // Je sauvegarde le nouveau panier dans le localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
     
-    // On relance l'affichage pour mettre à jour la liste et le total
+    // je relance l'affichage pour mettre à jour la liste et le total
     afficherPanier();
 }
-// Affiche le contenu du panier au chargement
+// j'affiche le contenu du panier au chargement
 function afficherPanier() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let list = document.getElementById('liste-panier');
@@ -64,7 +64,7 @@ function afficherPanier() {
 function validerCommande() {
     let cart = JSON.parse(localStorage.getItem('cart'));
 
-    // On utilise fetch pour envoyer le JSON à PHP
+    // J' utilise fetch pour envoyer le JSON à PHP
     fetch('valider_commande.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

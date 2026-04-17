@@ -1,13 +1,13 @@
 <?php 
-// 1. D'abord, on se connecte à la base de données
+// D'abord, je me  connecte à la base de données
 include 'include/db_connect.php'; 
 
-// 2. On récupère TOUS les produits de beauté
+// je récupère tous les produits de beauté
 $sql = "SELECT * FROM produits";
 $stmt = $pdo->query($sql);
 $produits = $stmt->fetchAll();
 
-// Ensuite, on inclut le header
+// Ensuite, j'inclus le header
 include 'include/header.php'; 
 ?>
 
@@ -17,7 +17,7 @@ include 'include/header.php';
     <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
         
         <?php 
-        // 3. On fait une boucle pour afficher chaque produit
+        // Ici j'ai fait une boucle pour afficher chaque produit
         foreach ($produits as $produit) : 
         ?>
             <div class="glass-card">
@@ -49,15 +49,15 @@ include 'include/header.php';
 </div>
 
 <script>
-// 4. Ton code JavaScript doit évoluer pour gérer l'ID et l'image
+// Mon code JavaScript doit évoluer pour gérer l'ID et l'image
 function addToCart(id, name, price, image) {
-    // Récupère le panier actuel
+    // je récupère le panier actuel
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
-    // Ajoute le nouveau produit avec toutes ses infos
+    // J'ajoute le nouveau produit avec toutes ses infos
     cart.push({id, name, price, image});
     
-    // Enregistre
+    // j'enregistre
     localStorage.setItem('cart', JSON.stringify(cart));
     
     updateCartCount();
@@ -68,14 +68,14 @@ function addToCart(id, name, price, image) {
 
 function updateCartCount() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    // Vérifie si l'élément existe avant de modifier son texte
+    // je vérifie si l'élément existe avant de modifier son texte
     const cartCountEl = document.getElementById('cart-count');
     if (cartCountEl) {
         cartCountEl.innerText = cart.length;
     }
 }
 
-// Met à jour le compteur au chargement de la page
+// je met à jour le compteur au chargement de la page
 updateCartCount();
 </script>
 

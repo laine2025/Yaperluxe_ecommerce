@@ -6,14 +6,14 @@ if (isset($_POST['login'])) {
     $email = htmlspecialchars($_POST['email']);
     $password = $_POST['password'];
 
-    // On cherche l'utilisateur par son email
+    // je cherche l'utilisateur par son email
     $sql = "SELECT * FROM utilisateurs WHERE email = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
-        // Le mot de passe est bon ! On crée la session
+        // Si le mot de passe est bon ! je crée la session
         $_SESSION['id_user'] = $user['id_user'];
         $_SESSION['pseudo'] = $user['pseudo'];
         $_SESSION['photo'] = $user['photo_profil'];
@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
         header("Location: dashboard.php");
         exit();
     } else {
-        // Erreur
+        // En cas d'erreur
         header("Location: connexion.php?error=1");
         exit();
     }

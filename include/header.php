@@ -17,6 +17,6 @@
             <a href="connexion.php" class="btn-grad">Connexion</a>
         </div>
         <?php if(isset($_SESSION['id_user'])): ?>
-        <a href="deconnexion.php" class="btn-logout">Déconnexion</a>
+        <a href="deconnexion.php" class="btn-gra">Déconnexion</a>
         <?php endif; ?>
     </nav>

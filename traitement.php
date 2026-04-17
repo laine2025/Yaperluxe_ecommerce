@@ -6,7 +6,7 @@ require 'libs/PHPMailer/Exception.php';
 require 'libs/PHPMailer/PHPMailer.php';
 require 'libs/PHPMailer/SMTP.php';
 
-include 'include/db_connect.php'; // Charge la BD et le .env
+include 'include/db_connect.php'; // Pour charge la BD et le .env
 
 if (isset($_POST['register'])) {
     $pseudo = htmlspecialchars($_POST['username']);
@@ -22,12 +22,12 @@ if (isset($_POST['register'])) {
     }
 
     try {
-        // 1. Insertion en base de données
+        // Insertion en base de données
         $sql = "INSERT INTO utilisateurs (pseudo, email, password, photo_profil) VALUES (?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$pseudo, $email, $password, $photo_nom]);
 
-        // 2. Préparation du Mail avec PHPMailer
+        // Préparation du Mail avec PHPMailer
         $mail = new PHPMailer(true);
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';               
@@ -41,7 +41,7 @@ if (isset($_POST['register'])) {
         $mail->setFrom('mamoudouzakiya1956@gmail.com', 'YAPERLUXE');
         $mail->addAddress($email);
 
-        // Design du mail (on reprend tes dégradés !)
+        // Design du mail (je reprend les dégradés !)
         $mail->isHTML(true);
         $mail->Subject = "Bienvenue dans l'univers de YAPERLUXE, $pseudo !";
         $mail->Body = "
@@ -62,7 +62,7 @@ if (isset($_POST['register'])) {
         header("Location: connexion.php?success=1");
 
     } catch (Exception $e) {
-        // Si le mail échoue, on enregistre quand même mais on prévient
+        // Si le mail échoue, j'enregistre quand même mais je préviens
         header("Location: connexion.php?error=mail_failed");
     }
 }
