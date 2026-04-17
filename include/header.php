@@ -16,4 +16,7 @@
             <a href="panier.php" style="color:white; margin-right:20px;">Panier (<span id="cart-count">0</span>)</a>
             <a href="connexion.php" class="btn-grad">Connexion</a>
         </div>
+        <?php if(isset($_SESSION['id_user'])): ?>
+        <a href="deconnexion.php" class="btn-logout">Déconnexion</a>
+        <?php endif; ?>
     </nav>
