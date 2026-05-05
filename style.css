@@ -12,7 +12,7 @@ body {
     min-height: 100vh;
 }
 
-/* Les boules de couleur en fond */
+/* ça c'st les boules de couleur en fond */
 .blob {
     position: fixed;
     width: 400px;

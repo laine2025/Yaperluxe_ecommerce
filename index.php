@@ -2,7 +2,7 @@
 // D'abord, je me  connecte à la base de données
 include 'include/db_connect.php'; 
 
-// je récupère tous les produits de beauté
+// je récupère tous les produits
 $sql = "SELECT * FROM produits";
 $stmt = $pdo->query($sql);
 $produits = $stmt->fetchAll();
@@ -21,9 +21,7 @@ include 'include/header.php';
         foreach ($produits as $produit) : 
         ?>
             <div class="glass-card">
-                <img src="uploads/produits/<?php echo $produit['image_prod']; ?>" 
-                     style="width:100%; border-radius:15px; height: 200px; object-fit: cover;"
-                     alt="<?php echo $produit['nom_prod']; ?>">
+                <img src="uploads/produits/<?php echo $produit['image_prod']; ?>"  style="width:100%; border-radius:15px; height: 200px; object-fit: cover;"alt="<?php echo $produit['nom_prod']; ?>">
 
                 <h3 style="margin-top: 15px;"><?php echo $produit['nom_prod']; ?></h3>
 
@@ -49,7 +47,7 @@ include 'include/header.php';
 </div>
 
 <script>
-// Mon code JavaScript doit évoluer pour gérer l'ID et l'image
+// Mon code JavaScript évolue pour gérer l'ID et l'image
 function addToCart(id, name, price, image) {
     // je récupère le panier actuel
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -62,7 +60,7 @@ function addToCart(id, name, price, image) {
     
     updateCartCount();
     
-    // Petite animation optionnelle
+    // Petite animation 
     alert(name + " a été ajouté au panier !");
 }
 

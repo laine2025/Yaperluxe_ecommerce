@@ -17,6 +17,10 @@
             <a href="connexion.php" class="btn-grad">Connexion</a>
         </div>
         <?php if(isset($_SESSION['id_user'])): ?>
-        <a href="deconnexion.php" class="btn-gra">Déconnexion</a>
+        <a href="deconnexion.php" class="btn-grad">Déconnexion</a>
+        <?php endif; ?>
+
+        <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+        <a href="admin/dashbord_ad.php" style="color: red; font-weight: bold;">[ ESPACE ADMIN ]</a>
         <?php endif; ?>
     </nav>
