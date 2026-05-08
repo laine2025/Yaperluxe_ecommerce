@@ -17,7 +17,7 @@ include '../include/header_admin.php';
 
     <section>
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2>📦 Catalogue</h2>
+            <h2>📦Catalogue</h2>
             <a href="ajouter_produit.php" class="btn-add">+ Nouveau Bijou</a>
         </div>
         

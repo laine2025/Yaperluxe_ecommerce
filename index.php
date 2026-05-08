@@ -10,6 +10,26 @@ $produits = $stmt->fetchAll();
 // Ensuite, j'inclus le header
 include 'include/header.php'; 
 ?>
+<header class="btn-grad" style=" display:flex;justify-content:space-around;padding:10px 20px;margin:10px 40px;margin-top: 100px;border-radius:10px;height:80vh">
+    <div class="text" style="width: 100%;text-align: center;">
+        <h2 style="margin-top: 20vh;color:#fff">Bienvenue sur ShopEsa</h2>
+        <p style="color: #fff;line-height: 2em;font-size:17px;padding: 0 20px;">
+            ShopEsa vous offre des produits de qualités. 
+            Découvrez notre collection de bijoux et accessoires uniques, conçus pour sublimer votre style.
+             Profitez de nos offres exclusives et faites-vous plaisir avec nos créations élégantes et tendance.
+        </p>
+
+        <div class="begin" style="background-color: #fff;display:flex;padding:10px 10px;border-radius:10px;margin-top: 20px;justify-content: space-around;width:70%;margin-left: 13%;margin-top:100px">
+            <a href="#container" class="btn-grad" style="padding: 10px 20px; font-size: 18px; text-decoration: none; color: white; border-radius: 5px;">Boutique</a>
+          <?php if(isset($_SESSION['user_id'])): ?>
+            <a href="panier.php" class="btn-grad" style="padding: 10px 20px; font-size: 18px; text-decoration: none; color: white; border-radius: 5px;">Voir Panier</a>
+          <?php endif; ?>
+        </div>
+    </div>
+    <div class="image" style="width: 100%;">
+        <img src="cheville_1.jfif" alt="" style="width: 100%;border-radius:10px;height:80vh">
+    </div>
+</header>
 
 <div class="container" style="padding: 50px;">
     <h2 style="text-align:center; font-size: 3rem;">Nos Bijoux & Accessoires</h2>
