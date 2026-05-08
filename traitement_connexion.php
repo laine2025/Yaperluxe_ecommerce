@@ -17,9 +17,14 @@ if (isset($_POST['login'])) {
         $_SESSION['id_user'] = $user['id_user'];
         $_SESSION['pseudo'] = $user['pseudo'];
         $_SESSION['photo'] = $user['photo_profil'];
+        $_SESSION['role'] = $user['role'];
 
-        // Redirection vers le Dashboard
-        header("Location: dashboard.php");
+        if ($user['role'] === 'admin') {
+            header("Location: admin/dashbord_ad.php");
+        } else {
+            header("Location: dashboard.php");
+        }
+
         exit();
     } else {
         // En cas d'erreur

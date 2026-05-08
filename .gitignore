@@ -1,13 +1,13 @@
-# On ignore les fichiers de configuration contenant des mots de passe
+# Pour ignorer les fichiers de configuration contenant des mots de passe
 .env
 config.php
 
-# On ignore les dossiers de dépendances lourds (optionnel si vous travaillez sans Composer)
+# Pour ignorer les dossiers de dépendances lourds 
 /vendor/
 
-# On ignore les logs d'erreurs
+# Pour ignorer les logs d'erreurs
 *.log
 
-# On ignore les fichiers systèmes
+# Pour ignorer les fichiers systèmes
 .DS_Store
 Thumbs.db

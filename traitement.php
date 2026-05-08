@@ -41,7 +41,7 @@ if (isset($_POST['register'])) {
         $mail->setFrom('mamoudouzakiya1956@gmail.com', 'YAPERLUXE');
         $mail->addAddress($email);
 
-        // Design du mail (je reprend les dégradés !)
+        // Design du mail 
         $mail->isHTML(true);
         $mail->Subject = "Bienvenue dans l'univers de YAPERLUXE, $pseudo !";
         $mail->Body = "

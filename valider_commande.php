@@ -12,7 +12,7 @@ if (!$panier || !isset($_SESSION['id_user'])) {
 }
 
 try {
-    $pdo->beginTransaction(); // On démarre une transaction pour la sécurité
+    $pdo->beginTransaction(); // démarage d' une transaction pour la sécurité
 
     // J'effectue le calcul le total
     $total = 0;
@@ -23,19 +23,19 @@ try {
     $stmtCom = $pdo->prepare($sqlCom);
     $stmtCom->execute([$_SESSION['id_user'], $total]);
     
-    $id_commande = $pdo->lastInsertId(); // Ici je récupère l'ID de la commande qu'on vient de créer
+    $id_commande = $pdo->lastInsertId(); // Ici je récupère l'Id de la commande qu'on vient de créer
 
     // Je fais l'insertion les lignes de commande
     $sqlLigne = "INSERT INTO ligne_commande (id_com, id_prod, quantite, prix_unitaire) VALUES (?, ?, ?, ?)";
     $stmtLigne = $pdo->prepare($sqlLigne);
 
     foreach ($panier as $item) {
-        // Note: Dans un vrai projet, on récupère l'id_prod depuis le JSON
-        // Ici, on met 1 par défaut pour l'exemple, à adapter selon ton JSON
+        // NB: Dans mes recherches, dans un vrai projet, on récupère l'id_prod depuis le JSON
+        // Mais ici, j'ai utiliser une autre méthode,on met 1 par défaut pour l'exemple, à adapter selon ton JSON
         $stmtLigne->execute([$id_commande, $item['id'] ?? 1, 1, $item['price']]);
     }
 
-    $pdo->commit(); // On valide tout en base de données
+    $pdo->commit(); // validation bd tout en base de données
     echo json_encode(['success' => true]);
 
 } catch (Exception $e) {

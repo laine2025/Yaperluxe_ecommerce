@@ -5,13 +5,12 @@ include 'include/header.php';
 
 <div class="container glass-card" style="margin: 50px;">
     <h2>🛒 Votre Panier</h2>
-    <div id="liste-panier">
-    </div>
+    <div id="liste-panier"></div>
     <hr>
     <div id="panier-total"></div>
 
     <?php if(isset($_SESSION['id_user'])): ?>
-        <button class="btn-grad" onclick="validerCommande()">Confirmer et Payer</button>
+        <button class="btn-grad" onclick="validerCommande()">Confirmer</button>
     <?php else: ?>
         <p>Veuillez vous <a href="connexion.php" style="color: #fd1d1d;">connecter</a> pour commander.</p>
     <?php endif; ?>
@@ -60,7 +59,7 @@ function afficherPanier() {
     document.getElementById('panier-total').innerHTML = `<h3>Total : ${total.toFixed(2)} F CFA</h3>`;
 }
 
-// FONCTION CRUCIALE : Envoie les données au PHP
+// LA FONCTION CRUCIALE : Elle envoie les données au PHP
 function validerCommande() {
     let cart = JSON.parse(localStorage.getItem('cart'));
 
@@ -74,7 +73,7 @@ function validerCommande() {
     .then(data => {
         if(data.success) {
             alert("Commande réussie !");
-            localStorage.removeItem('cart'); // On vide le panier local
+            localStorage.removeItem('cart'); // Pour vider le panier local
             window.location.href = "dashboard.php";
         } else {
             alert("Erreur : " + data.message);
