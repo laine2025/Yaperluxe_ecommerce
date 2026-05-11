@@ -21,6 +21,6 @@
         <?php endif; ?>
 
         <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-        <a href="admin/dashbord_ad.php" style="color: red; font-weight: bold;">[ ESPACE ADMIN ]</a>
+        
         <?php endif; ?>
     </nav>
